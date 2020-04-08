@@ -42,8 +42,8 @@ MonoBehaviour:
     y: 686
     width: 366
     height: 381
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 104, y: 122}
+  m_MaxSize: {x: 4004, y: 4022}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 344}
   m_MaxSize: {x: 4004, y: 8044}
   vertical: 1
-  controlID: 102
+  controlID: 166
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 444}
   m_MaxSize: {x: 22012, y: 10022}
   vertical: 0
-  controlID: 101
+  controlID: 15
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 33
+  controlID: 145
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -264,8 +264,8 @@ MonoBehaviour:
     y: 0
     width: 422
     height: 1067
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 72}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -317,8 +317,8 @@ MonoBehaviour:
     y: 545
     width: 779
     height: 522
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 222}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -443,9 +443,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 84550000
+      m_SelectedIDs: 24390000
       m_LastClickedID: 0
-      m_ExpandedIDs: 9ac0ffff78fbffff
+      m_ExpandedIDs: 78fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -544,20 +544,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/PolygonSciFiCity
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/PolygonSciFiCity
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: H:\Documents\Unity Projects\New folder\RTS
+  m_LastProjectPath: H:\Documents\Unity Projects\New folder\VATSPrototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 84550000
-    m_LastClickedID: 21892
-    m_ExpandedIDs: 0000000022390000623e00004c4700004e4c0000324d00004a4e0000845500007c580000429700004497000046970000489700004a97000000ca9a3b
+    m_SelectedIDs: 24390000
+    m_LastClickedID: 14628
+    m_ExpandedIDs: 0000000024390000643e00004e470000504c0000344d00004c4e0000865500007e580000589700005a9700005c9700005e9700006097000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -585,7 +585,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000022390000623e00004c4700004e4c0000324d00004a4e0000845500007c580000429700004497000046970000489700004a970000
+    m_ExpandedIDs: 0000000024390000643e00004e470000504c0000344d00004c4e0000865500007e580000589700005a9700005c9700005e97000060970000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.27683592, y: 0.0028827954, z: -0.0008305993, w: 0.9609157}
     speed: 2
-    m_Value: {x: 0.27683508, y: 0.0028827868, z: -0.0008305968, w: 0.9609128}
+    m_Value: {x: -0.2768359, y: -0.0028827954, z: 0.0008305992, w: -0.9609156}
   m_Size:
     m_Target: 2.2852724
     speed: 2
