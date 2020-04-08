@@ -1,27 +1,36 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CallumCode
 {
     public class CharacterZoneHighlighter : MonoBehaviour
     {
+        [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] Color HighlightColour;
         [Header("Zone Values")]
-        [SerializeField] Color HeadTexValue;
-        [SerializeField] Color ArmsTexValue;
-        [SerializeField] Color TorsoTexValue;
-        [SerializeField] Color LegsTexValue;
+        [SerializeField][Range(0, 255)] float HeadTexValue;
+        [SerializeField][Range(0, 255)] float ArmsTexValue;
+        [SerializeField][Range(0, 255)] float TorsoTexValue;
+        [SerializeField][Range(0, 255)] float LegsTexValue;
+        [Header("Pulse settings")]
+        [SerializeField] bool ShouldPulse;
+        [SerializeField] float PulseRangeMin;
+        [SerializeField] float PulseRangeMax;
+        [SerializeField] float PulseSpeed;
 
         CachingManager m_cachingManager;
         Material m_VATsMaterial;
+
+        const float m_precisionAllowence = 0.01f;
+        BodyZone m_selectedZone = BodyZone.None;
 
         // Debug
         Array m_enumValues;
 
         public void HighlightZone(BodyZone bodyZone)
         {
+            m_selectedZone = bodyZone;
+
             switch (bodyZone)
             {
                 case BodyZone.Head:
@@ -36,20 +45,42 @@ namespace CallumCode
                 case BodyZone.Legs:
                     SetSelectedZone(LegsTexValue);
                     break;
+                case BodyZone.None:
+                    m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZoneMin], 0.0f);
+                    m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZoneMax], 0.0f);
+                    break;
                 default:
                     break;
             }
             
         }
 
-        private void SetSelectedZone(Color zoneID)
+        public void TogglePulse(bool shouldPulse)
         {
-            m_VATsMaterial.SetColor(m_cachingManager[ShaderValues._SelectedZone], zoneID);
+            ShouldPulse = shouldPulse;
+            m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._HighlightBrightness], 1.0f);
+        }
+
+        private void SetSelectedZone(float zoneID)
+        {
+            float conv = zoneID / 256;
+
+            m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZoneMin], conv - m_precisionAllowence);
+            m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZoneMax], conv + m_precisionAllowence);
+        }
+
+        private void Update()
+        {
+            if(ShouldPulse)
+            {
+                float brightness = Mathf.Lerp(PulseRangeMin, PulseRangeMax, ((Mathf.Sin(Time.timeSinceLevelLoad * PulseSpeed) + 1) * 0.5f));
+                m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._HighlightBrightness], brightness);
+            }
         }
 
         private void Awake()
         {
-            m_VATsMaterial = gameObject.GetComponent<MeshRenderer>().material;
+            m_VATsMaterial = meshRenderer.material;
 
             m_cachingManager = new CachingManager();
             m_cachingManager.Init(typeof(ShaderValues), Shader.PropertyToID);
@@ -64,10 +95,17 @@ namespace CallumCode
         {
             foreach (var enumVal in m_enumValues)
             {
-                if(GUILayout.Button($"Select {enumVal.ToString()}"))
+                BodyZone cur = (BodyZone)enumVal;
+
+                if(cur == m_selectedZone)
                 {
-                    HighlightZone((BodyZone)enumVal);
+                    GUI.color = Color.green;
                 }
+                if (GUILayout.Button($"Select {enumVal.ToString()}"))
+                {
+                    HighlightZone(cur);
+                }
+                GUI.color = Color.white;
             }
         }
 
@@ -76,13 +114,16 @@ namespace CallumCode
             Head = 1,
             Arms,
             Torso,
-            Legs
+            Legs,
+            None
         }
 
         private enum ShaderValues
         {
-            _SelectedZone,
-            _HighlightColor
+            _SelectedZoneMin,
+            _SelectedZoneMax,
+            _HighlightColor,
+            _HighlightBrightness
         }
     }
 

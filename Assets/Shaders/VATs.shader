@@ -8,7 +8,9 @@
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _ZonesTex("Zones map", 2D) = "white" {}
         _HighlightColor ("Highlight Color", Color) = (0, 1, 0, 1)
-        _SelectedZone ("Selected_Zone", Color) = (0, 0, 0, 1)
+        _SelectedZoneMin ("Selected_Zone_Min", Range(0,1)) = 0.0
+        _SelectedZoneMax ("Selected_Zone_Max", Range(0,1)) = 0.0
+        _HighlightBrightness ("_HighlightBrightness", Float) = 0.0
     }
     SubShader
     {
@@ -25,7 +27,9 @@
         sampler2D _MainTex;
         sampler2D _ZonesTex;
 
-        fixed4 _SelectedZone;
+        float _SelectedZoneMin;
+        float _SelectedZoneMax;
+        float _HighlightBrightness;
 
         struct Input
         {
@@ -53,11 +57,11 @@
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
 
-            fixed4 zoneID = tex2D(_ZonesTex, IN.uv_MainTex);
+            float zoneID = tex2D(_ZonesTex, IN.uv_MainTex).r;
 
-            if (zoneID.r == _SelectedZone.r && zoneID.g == _SelectedZone.g && zoneID.b == _SelectedZone.b)
+            if (zoneID >= _SelectedZoneMin && zoneID <= _SelectedZoneMax)
             {
-                c.rgb *= _HighlightColor;
+                c.rgb += (_HighlightColor * _HighlightBrightness);
             }
 
             o.Albedo = c.rgb;
