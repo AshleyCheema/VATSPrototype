@@ -313,10 +313,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HighlightColour: {r: 0.24720883, g: 1, b: 0, a: 1}
-  HeadTexValue: 1
-  ArmsTexValue: 0.8
-  TorsoTexValue: 0.4
-  LegsTexValue: 0.6
+  HeadTexValue: {r: 1, g: 0, b: 0, a: 0}
+  ArmsTexValue: {r: 0, g: 1, b: 0, a: 0}
+  TorsoTexValue: {r: 0, g: 0, b: 0, a: 0}
+  LegsTexValue: {r: 0, g: 0, b: 1, a: 0}
 --- !u!1001 &1077749843
 PrefabInstance:
   m_ObjectHideFlags: 0
