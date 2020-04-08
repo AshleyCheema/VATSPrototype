@@ -451,6 +451,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: f5ed9c6da0d1def40ae45e75df905015,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 13e62a972f28de24bac6024a96f5eced, type: 2}
     - target: {fileID: -4216859302048453862, guid: f5ed9c6da0d1def40ae45e75df905015,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -506,10 +511,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: f5ed9c6da0d1def40ae45e75df905015,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 13e62a972f28de24bac6024a96f5eced, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5ed9c6da0d1def40ae45e75df905015, type: 3}

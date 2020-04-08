@@ -1,31 +1,51 @@
-﻿using System;
+﻿#define Kara_Debug
+
+using System;
 using UnityEngine;
+
 
 namespace CallumCode
 {
     public class CharacterZoneHighlighter : MonoBehaviour
     {
-        [SerializeField] MeshRenderer meshRenderer;
-        [SerializeField] Color HighlightColour;
+        [SerializeField] MeshRenderer meshRenderer              = default;
+        [SerializeField] Color HighlightColour                  = default;
         [Header("Zone Values")]
-        [SerializeField][Range(0, 255)] float HeadTexValue;
-        [SerializeField][Range(0, 255)] float ArmsTexValue;
-        [SerializeField][Range(0, 255)] float TorsoTexValue;
-        [SerializeField][Range(0, 255)] float LegsTexValue;
+        [SerializeField][Range(0, 255)] float HeadTexValue      = default;
+        [SerializeField][Range(0, 255)] float ArmsTexValue      = default;
+        [SerializeField][Range(0, 255)] float TorsoTexValue     = default;
+        [SerializeField][Range(0, 255)] float LegsTexValue      = default;
         [Header("Pulse settings")]
-        [SerializeField] bool ShouldPulse;
-        [SerializeField] float PulseRangeMin;
-        [SerializeField] float PulseRangeMax;
-        [SerializeField] float PulseSpeed;
+        [SerializeField] bool ShouldPulse                       = default;
+        [SerializeField] float PulseRangeMin                    = default;
+        [SerializeField] float PulseRangeMax                    = default;
+        [SerializeField] float PulseSpeed                       = default;
 
-        CachingManager m_cachingManager;
-        Material m_VATsMaterial;
+        CachingManager m_cachingManager                         = default;
+        Material m_VATsMaterial                                 = default;
 
         const float m_precisionAllowence = 0.01f;
         BodyZone m_selectedZone = BodyZone.None;
 
-        // Debug
-        Array m_enumValues;
+
+        public void Init()
+        {
+            m_VATsMaterial = meshRenderer.material;
+
+            m_cachingManager = new CachingManager();
+            m_cachingManager.Init(typeof(ShaderValues), Shader.PropertyToID);
+
+            m_VATsMaterial.SetColor(m_cachingManager[ShaderValues._HighlightColor], HighlightColour);
+        }
+
+        public void Process()
+        {
+            if (ShouldPulse)
+            {
+                float brightness = Mathf.Lerp(PulseRangeMin, PulseRangeMax, ((Mathf.Sin(Time.timeSinceLevelLoad * PulseSpeed) + 1) * 0.5f));
+                m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._HighlightBrightness], brightness);
+            }
+        }
 
         public void HighlightZone(BodyZone bodyZone)
         {
@@ -61,6 +81,7 @@ namespace CallumCode
             m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._HighlightBrightness], 1.0f);
         }
 
+
         private void SetSelectedZone(float zoneID)
         {
             float conv = zoneID / 256;
@@ -69,45 +90,6 @@ namespace CallumCode
             m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZoneMax], conv + m_precisionAllowence);
         }
 
-        private void Update()
-        {
-            if(ShouldPulse)
-            {
-                float brightness = Mathf.Lerp(PulseRangeMin, PulseRangeMax, ((Mathf.Sin(Time.timeSinceLevelLoad * PulseSpeed) + 1) * 0.5f));
-                m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._HighlightBrightness], brightness);
-            }
-        }
-
-        private void Awake()
-        {
-            m_VATsMaterial = meshRenderer.material;
-
-            m_cachingManager = new CachingManager();
-            m_cachingManager.Init(typeof(ShaderValues), Shader.PropertyToID);
-
-            m_VATsMaterial.SetColor(m_cachingManager[ShaderValues._HighlightColor], HighlightColour);
-
-            // Debug
-            m_enumValues = (typeof(BodyZone)).GetEnumValues();
-        }
-
-        private void OnGUI()
-        {
-            foreach (var enumVal in m_enumValues)
-            {
-                BodyZone cur = (BodyZone)enumVal;
-
-                if(cur == m_selectedZone)
-                {
-                    GUI.color = Color.green;
-                }
-                if (GUILayout.Button($"Select {enumVal.ToString()}"))
-                {
-                    HighlightZone(cur);
-                }
-                GUI.color = Color.white;
-            }
-        }
 
         public enum BodyZone
         {
@@ -125,6 +107,45 @@ namespace CallumCode
             _HighlightColor,
             _HighlightBrightness
         }
+
+
+
+
+        private void Update()
+        {
+            Process();
+        }
+
+        private void Awake()
+        {
+            Init();
+        }
+
+#if Kara_Debug
+
+        Array debug_EnumVals = (typeof(BodyZone)).GetEnumValues();
+
+        private void OnGUI()
+        {
+            TogglePulse(GUILayout.Toggle(ShouldPulse, "Pulse"));
+
+            foreach (var enumVal in debug_EnumVals)
+            {
+                BodyZone cur = (BodyZone)enumVal;
+
+                if (cur == m_selectedZone)
+                {
+                    GUI.color = Color.green;
+                }
+                if (GUILayout.Button($"Select {enumVal.ToString()}"))
+                {
+                    HighlightZone(cur);
+                }
+                GUI.color = Color.white;
+            }
+        }
+
+#endif
     }
 
 }
