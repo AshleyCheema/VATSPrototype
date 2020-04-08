@@ -8,7 +8,7 @@
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _ZonesTex("Zones map", 2D) = "white" {}
         _HighlightColor ("Highlight Color", Color) = (0, 1, 0, 1)
-        _SelectedZone ("Selected_Zone", Range(0,10)) = 0
+        _SelectedZone ("Selected_Zone", Color) = (0, 0, 0, 1)
     }
     SubShader
     {
@@ -25,7 +25,7 @@
         sampler2D _MainTex;
         sampler2D _ZonesTex;
 
-        float _SelectedZone;
+        fixed4 _SelectedZone;
 
         struct Input
         {
@@ -52,15 +52,15 @@
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
-            o.Albedo = c.rgb;
 
-            float zoneID = tex2D(_ZonesTex, IN.uv_MainTex).r;
+            fixed4 zoneID = tex2D(_ZonesTex, IN.uv_MainTex);
 
-            if (zoneID == _SelectedZone)
+            if (zoneID.r == _SelectedZone.r && zoneID.g == _SelectedZone.g && zoneID.b == _SelectedZone.b)
             {
                 c.rgb *= _HighlightColor;
             }
-            
+
+            o.Albedo = c.rgb;
         }
         ENDCG
     }

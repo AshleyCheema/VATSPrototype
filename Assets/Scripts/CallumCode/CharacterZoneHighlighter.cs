@@ -8,6 +8,11 @@ namespace CallumCode
     public class CharacterZoneHighlighter : MonoBehaviour
     {
         [SerializeField] Color HighlightColour;
+        [Header("Zone Values")]
+        [SerializeField] Color HeadTexValue;
+        [SerializeField] Color ArmsTexValue;
+        [SerializeField] Color TorsoTexValue;
+        [SerializeField] Color LegsTexValue;
 
         CachingManager m_cachingManager;
         Material m_VATsMaterial;
@@ -17,12 +22,34 @@ namespace CallumCode
 
         public void HighlightZone(BodyZone bodyZone)
         {
-            m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZone], (float)bodyZone);
+            switch (bodyZone)
+            {
+                case BodyZone.Head:
+                    SetSelectedZone(HeadTexValue);
+                    break;
+                case BodyZone.Arms:
+                    SetSelectedZone(ArmsTexValue);
+                    break;
+                case BodyZone.Torso:
+                    SetSelectedZone(TorsoTexValue);
+                    break;
+                case BodyZone.Legs:
+                    SetSelectedZone(LegsTexValue);
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+
+        private void SetSelectedZone(Color zoneID)
+        {
+            m_VATsMaterial.SetColor(m_cachingManager[ShaderValues._SelectedZone], zoneID);
         }
 
         private void Awake()
         {
-            m_VATsMaterial = gameObject.GetComponent<SkinnedMeshRenderer>().material;
+            m_VATsMaterial = gameObject.GetComponent<MeshRenderer>().material;
 
             m_cachingManager = new CachingManager();
             m_cachingManager.Init(typeof(ShaderValues), Shader.PropertyToID);
@@ -46,14 +73,10 @@ namespace CallumCode
 
         public enum BodyZone
         {
-            None = -1,
-            Head,
-            LeftArm,
-            RightArm,
+            Head = 1,
+            Arms,
             Torso,
-            LeftLeg,
-            RightLeg,
-            Count
+            Legs
         }
 
         private enum ShaderValues
