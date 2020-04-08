@@ -9,7 +9,7 @@ public class EnemyUVs : MonoBehaviour
     {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         Vector2[] UVs = new Vector2[mesh.vertices.Length];
-        // Front
+        // Front 
         UVs[0] = new Vector2(0.0f, 0.0f);
         UVs[1] = new Vector2(0.333f, 0.0f);
         UVs[2] = new Vector2(0.0f, 0.333f);
