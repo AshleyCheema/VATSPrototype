@@ -58,11 +58,19 @@
             o.Alpha = c.a;
 
             float zoneID = tex2D(_ZonesTex, IN.uv_MainTex).r;
+            
+            float scaleMin = step(_SelectedZoneMin, zoneID);
+            float scaleMax = 1 - step(_SelectedZoneMax, zoneID);
 
-            if (zoneID >= _SelectedZoneMin && zoneID <= _SelectedZoneMax)
-            {
-                c.rgb += (_HighlightColor * _HighlightBrightness);
-            }
+            float scale = scaleMin * scaleMax;
+
+            // Above "scale" is this but branchless
+            //if (zoneID >= _SelectedZoneMin && zoneID <= _SelectedZoneMax)
+            //{
+            //    c.rgb += (_HighlightColor * _HighlightBrightness);
+            //}
+
+            c.rgb += (_HighlightColor * _HighlightBrightness) * scale;
 
             o.Albedo = c.rgb;
         }
