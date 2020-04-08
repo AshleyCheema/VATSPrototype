@@ -17,7 +17,7 @@ namespace CallumCode
 
         public void HighlightZone(BodyZone bodyZone)
         {
-            m_VATsMaterial.SetFloat(m_cachingManager.GetID(ShaderValues._SelectedZone), (float)bodyZone);
+            m_VATsMaterial.SetFloat(m_cachingManager[ShaderValues._SelectedZone], (float)bodyZone);
         }
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace CallumCode
             m_cachingManager = new CachingManager();
             m_cachingManager.Init(typeof(ShaderValues), Shader.PropertyToID);
 
-            m_VATsMaterial.SetColor(m_cachingManager.GetID(ShaderValues._HighlightColor), HighlightColour);
+            m_VATsMaterial.SetColor(m_cachingManager[ShaderValues._HighlightColor], HighlightColour);
 
             // Debug
             m_enumValues = (typeof(BodyZone)).GetEnumValues();

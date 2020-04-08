@@ -18,14 +18,17 @@ namespace CallumCode
             }
         }
 
-        public int GetID(Enum enumVal)
+        public int this[Enum enumVal]
         {
-            return m_IDCache[enumVal];
-        }
+            get
+            {
+                return m_IDCache[enumVal];
+            }
 
-        public void SetID(Enum enumVal, int newID)
-        {
-            m_IDCache[enumVal] = newID;
+            set
+            {
+                m_IDCache[enumVal] = value;
+            }
         }
     }
 
@@ -52,10 +55,10 @@ namespace CallumCode
      * This caching method is likely to be something like Shader.PropertyToID
      * or Animator.StringToHash
      * 
-     * To use this ID later, use GetID and use the enum value for the 
+     * To use this ID later, access with [] and use the enum value for the 
      * property you're trying to get the index for. For example:
      * 
-     * m_animator.SetTrigger(m_cache.GetID(AnimatorValues.OnShoot))
+     * m_animator.SetTrigger(m_cache[AnimatorValues.OnShoot])
      * opposed to...
      * m_animator.SetTrigger("OnShoot");
      */
