@@ -21,13 +21,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PolygonScifi_01_A
-  m_Shader: {fileID: 4800000, guid: 047c1da472be7f648a395a05475e2081, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2050
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -110,6 +111,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.2
     - _GlossyReflections: 1
+    - _HighlightBrightness: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -117,6 +119,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SelectedZone: 0
+    - _SelectedZoneMax: 0
+    - _SelectedZoneMin: 0
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
