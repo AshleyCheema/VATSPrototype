@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D973CBAE-AF5C-67C8-9EC3-328FB0F61F9B}</ProjectGuid>
+    <ProjectGuid>{30185AD8-608D-52D8-D6AE-0201F47A56E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -70,69 +70,72 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\EnemyUVs.cs" />
+    <Compile Include="Assets\Scripts\CallumCode\CachingManager.cs" />
+    <Compile Include="Assets\Scripts\CallumCode\CharacterZoneHighlighter.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <None Include="Assets\Shaders\VATs.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\PolygonSciFiCity\Shaders\Polygon_UVScroll.shader" />
     <None Include="Assets\PolygonSciFiCity\Shaders\Polygon_Triplanar.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>H:/Program Files (x86)/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -312,7 +315,7 @@
       <HintPath>H:/Program Files (x86)/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>H:/Documents/Unity Projects/New folder/RTS/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>H:/Documents/Unity Projects/New folder/VATSPrototype/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>H:/Program Files (x86)/2019.2.0f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
