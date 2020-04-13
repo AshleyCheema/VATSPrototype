@@ -69,9 +69,9 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\EnemyUVs.cs" />
     <Compile Include="Assets\Scripts\CallumCode\CachingManager.cs" />
     <Compile Include="Assets\Scripts\CallumCode\CharacterZoneHighlighter.cs" />
+    <Compile Include="Assets\Scripts\HightlightLimb.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <None Include="Assets\Shaders\VATs.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />

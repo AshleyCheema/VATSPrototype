@@ -18,6 +18,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera virtualMainCamera;
 
+    private HightlightLimb hightlightLimb;
+
     private bool vatsIsActive;
     private Ray cameraRay;
 
@@ -31,7 +33,23 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
+            LimbDetection();
             ResetCamera();
+        }
+    }
+
+    private void LimbDetection()
+    {
+        RaycastHit hit;
+        cameraRay = camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity, layerMask))
+        {
+                if (hit.transform.tag == "Enemy")
+            {
+                string limbName = hit.transform.gameObject.GetComponent<Collider>().name;
+                hightlightLimb.LimbSelection(limbName);
+            }
         }
     }
 
@@ -59,6 +77,7 @@ public class PlayerControl : MonoBehaviour
             {
                 if(hit.transform.tag == "Enemy")
                 {
+                    hightlightLimb = hit.transform.gameObject.GetComponent<HightlightLimb>();
                     vatsZoom(hit.transform);
                 }
             }
@@ -80,7 +99,7 @@ public class PlayerControl : MonoBehaviour
         cameraRay = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity))
         {
             Vector3 playerToMouse = hit.point - transform.position;
             playerToMouse.y = 0f;
