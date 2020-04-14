@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HightlightLimb : MonoBehaviour
 {
@@ -15,18 +16,16 @@ public class HightlightLimb : MonoBehaviour
     private float highlightArms;
     [SerializeField]
     private float highlightLegs;
+    [SerializeField]
+    private GameObject vatsNumbers;
+
     private float highlightNone = 0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         HighlightSelectedLimb(highlightNone);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void LimbSelection(string limbName)
@@ -56,6 +55,14 @@ public class HightlightLimb : MonoBehaviour
     private void HighlightSelectedLimb(float limb)
     {
         hightlightShader.SetFloat("_HighlightSelected", limb);
+        if (limb != highlightNone)
+        {
+            vatsNumbers.SetActive(true);
+        }
+        else
+        {
+            vatsNumbers.SetActive(false);
+        }
     }
 
     public enum Limbs

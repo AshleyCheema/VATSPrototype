@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
 
         if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity, layerMask))
         {
-                if (hit.transform.tag == "Enemy")
+            if (hit.transform.tag == "Enemy")
             {
                 string limbName = hit.transform.gameObject.GetComponent<Collider>().name;
                 hightlightLimb.LimbSelection(limbName);
@@ -62,6 +62,7 @@ public class PlayerControl : MonoBehaviour
                 virtualVatsCamera.gameObject.SetActive(false);
                 virtualMainCamera.gameObject.SetActive(true);
                 vatsIsActive = false;
+                hightlightLimb.LimbSelection("None");
             }
         }
     }
